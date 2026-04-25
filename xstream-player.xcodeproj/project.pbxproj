@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4FB4E4032F9CDD6C00121F5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB4E4022F9CDD6C00121F5A /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4FB4E40D2F9CDD6E00121F5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,15 +28,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4FB4E3FD2F9CDD6C00121F5A /* xstream-player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB4E3FD2F9CDD6C00121F5A /* xstream-player-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB4E4022F9CDD6C00121F5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FB4E40C2F9CDD6E00121F5A /* xstream-playerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xstream-playerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E4162F9CDD6E00121F5A /* xstream-playerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xstream-playerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB4E4D82F9CE61B00121F5A /* xstream-player-macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-macos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-tvos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		4FB4E3FF2F9CDD6C00121F5A /* xstream-player */ = {
+		4FB4E3FF2F9CDD6C00121F5A /* xstream-player-ios */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "xstream-player";
+			path = "xstream-player-ios";
 			sourceTree = "<group>";
 		};
 		4FB4E40F2F9CDD6E00121F5A /* xstream-playerTests */ = {
@@ -43,6 +50,16 @@
 		4FB4E4192F9CDD6E00121F5A /* xstream-playerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "xstream-playerUITests";
+			sourceTree = "<group>";
+		};
+		4FB4E4D92F9CE61B00121F5A /* xstream-player-macos */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "xstream-player-macos";
+			sourceTree = "<group>";
+		};
+		4FB4E5062F9CE65C00121F5A /* xstream-player-tvos */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "xstream-player-tvos";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -69,25 +86,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FB4E4D52F9CE61B00121F5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FB4E5022F9CE65C00121F5A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		4FB4E3F42F9CDD6C00121F5A = {
 			isa = PBXGroup;
 			children = (
-				4FB4E3FF2F9CDD6C00121F5A /* xstream-player */,
+				4FB4E3FF2F9CDD6C00121F5A /* xstream-player-ios */,
 				4FB4E40F2F9CDD6E00121F5A /* xstream-playerTests */,
 				4FB4E4192F9CDD6E00121F5A /* xstream-playerUITests */,
+				4FB4E4D92F9CE61B00121F5A /* xstream-player-macos */,
+				4FB4E5062F9CE65C00121F5A /* xstream-player-tvos */,
 				4FB4E3FE2F9CDD6C00121F5A /* Products */,
+				4FB4E4022F9CDD6C00121F5A /* ContentView.swift */,
 			);
 			sourceTree = "<group>";
 		};
 		4FB4E3FE2F9CDD6C00121F5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4FB4E3FD2F9CDD6C00121F5A /* xstream-player.app */,
+				4FB4E3FD2F9CDD6C00121F5A /* xstream-player-ios.app */,
 				4FB4E40C2F9CDD6E00121F5A /* xstream-playerTests.xctest */,
 				4FB4E4162F9CDD6E00121F5A /* xstream-playerUITests.xctest */,
+				4FB4E4D82F9CE61B00121F5A /* xstream-player-macos.app */,
+				4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4FB4E3FC2F9CDD6C00121F5A /* xstream-player */ = {
+		4FB4E3FC2F9CDD6C00121F5A /* xstream-player-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4FB4E4202F9CDD6E00121F5A /* Build configuration list for PBXNativeTarget "xstream-player" */;
+			buildConfigurationList = 4FB4E4202F9CDD6E00121F5A /* Build configuration list for PBXNativeTarget "xstream-player-ios" */;
 			buildPhases = (
 				4FB4E3F92F9CDD6C00121F5A /* Sources */,
 				4FB4E3FA2F9CDD6C00121F5A /* Frameworks */,
@@ -108,13 +144,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				4FB4E3FF2F9CDD6C00121F5A /* xstream-player */,
+				4FB4E3FF2F9CDD6C00121F5A /* xstream-player-ios */,
 			);
-			name = "xstream-player";
+			name = "xstream-player-ios";
 			packageProductDependencies = (
 			);
 			productName = "xstream-player";
-			productReference = 4FB4E3FD2F9CDD6C00121F5A /* xstream-player.app */;
+			productReference = 4FB4E3FD2F9CDD6C00121F5A /* xstream-player-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4FB4E40B2F9CDD6E00121F5A /* xstream-playerTests */ = {
@@ -163,6 +199,50 @@
 			productReference = 4FB4E4162F9CDD6E00121F5A /* xstream-playerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4FB4E4D72F9CE61B00121F5A /* xstream-player-macos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FB4E4F82F9CE61C00121F5A /* Build configuration list for PBXNativeTarget "xstream-player-macos" */;
+			buildPhases = (
+				4FB4E4D42F9CE61B00121F5A /* Sources */,
+				4FB4E4D52F9CE61B00121F5A /* Frameworks */,
+				4FB4E4D62F9CE61B00121F5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4FB4E4D92F9CE61B00121F5A /* xstream-player-macos */,
+			);
+			name = "xstream-player-macos";
+			packageProductDependencies = (
+			);
+			productName = xstream.player.macos;
+			productReference = 4FB4E4D82F9CE61B00121F5A /* xstream-player-macos.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4FB4E5042F9CE65C00121F5A /* xstream-player-tvos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FB4E50F2F9CE65D00121F5A /* Build configuration list for PBXNativeTarget "xstream-player-tvos" */;
+			buildPhases = (
+				4FB4E5012F9CE65C00121F5A /* Sources */,
+				4FB4E5022F9CE65C00121F5A /* Frameworks */,
+				4FB4E5032F9CE65C00121F5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4FB4E5062F9CE65C00121F5A /* xstream-player-tvos */,
+			);
+			name = "xstream-player-tvos";
+			packageProductDependencies = (
+			);
+			productName = xstream.player.tvos;
+			productReference = 4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +264,12 @@
 						CreatedOnToolsVersion = 26.4.1;
 						TestTargetID = 4FB4E3FC2F9CDD6C00121F5A;
 					};
+					4FB4E4D72F9CE61B00121F5A = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
+					4FB4E5042F9CE65C00121F5A = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 4FB4E3F82F9CDD6C00121F5A /* Build configuration list for PBXProject "xstream-player" */;
@@ -200,9 +286,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4FB4E3FC2F9CDD6C00121F5A /* xstream-player */,
+				4FB4E3FC2F9CDD6C00121F5A /* xstream-player-ios */,
 				4FB4E40B2F9CDD6E00121F5A /* xstream-playerTests */,
 				4FB4E4152F9CDD6E00121F5A /* xstream-playerUITests */,
+				4FB4E4D72F9CE61B00121F5A /* xstream-player-macos */,
+				4FB4E5042F9CE65C00121F5A /* xstream-player-tvos */,
 			);
 		};
 /* End PBXProject section */
@@ -229,6 +317,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FB4E4D62F9CE61B00121F5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FB4E5032F9CE65C00121F5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -236,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FB4E4032F9CDD6C00121F5A /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,17 +356,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FB4E4D42F9CE61B00121F5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FB4E5012F9CE65C00121F5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		4FB4E40E2F9CDD6E00121F5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4FB4E3FC2F9CDD6C00121F5A /* xstream-player */;
+			target = 4FB4E3FC2F9CDD6C00121F5A /* xstream-player-ios */;
 			targetProxy = 4FB4E40D2F9CDD6E00121F5A /* PBXContainerItemProxy */;
 		};
 		4FB4E4182F9CDD6E00121F5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4FB4E3FC2F9CDD6C00121F5A /* xstream-player */;
+			target = 4FB4E3FC2F9CDD6C00121F5A /* xstream-player-ios */;
 			targetProxy = 4FB4E4172F9CDD6E00121F5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -410,22 +527,19 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "sinou.xstream-player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.4;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -454,22 +568,19 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "sinou.xstream-player";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.4;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -575,6 +686,137 @@
 			};
 			name = Release;
 		};
+		4FB4E4F92F9CE61C00121F5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV56L5GX3F;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "sinou.xstream-player-macos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		4FB4E4FA2F9CE61C00121F5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV56L5GX3F;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "sinou.xstream-player-macos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		4FB4E5102F9CE65D00121F5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV56L5GX3F;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "sinou.xstream-player-tvos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.4;
+			};
+			name = Debug;
+		};
+		4FB4E5112F9CE65D00121F5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AV56L5GX3F;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "sinou.xstream-player-tvos";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.4;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -587,7 +829,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4FB4E4202F9CDD6E00121F5A /* Build configuration list for PBXNativeTarget "xstream-player" */ = {
+		4FB4E4202F9CDD6E00121F5A /* Build configuration list for PBXNativeTarget "xstream-player-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4FB4E4212F9CDD6E00121F5A /* Debug */,
@@ -610,6 +852,24 @@
 			buildConfigurations = (
 				4FB4E4272F9CDD6E00121F5A /* Debug */,
 				4FB4E4282F9CDD6E00121F5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FB4E4F82F9CE61C00121F5A /* Build configuration list for PBXNativeTarget "xstream-player-macos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FB4E4F92F9CE61C00121F5A /* Debug */,
+				4FB4E4FA2F9CE61C00121F5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FB4E50F2F9CE65D00121F5A /* Build configuration list for PBXNativeTarget "xstream-player-tvos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FB4E5102F9CE65D00121F5A /* Debug */,
+				4FB4E5112F9CE65D00121F5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
