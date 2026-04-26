@@ -6,13 +6,10 @@
 //
 
 import Foundation
-import SwiftData
 
-@Model
-final class MediaItem {
-    var timestamp: Date
-    
-    init(timestamp: Date) {
-        self.timestamp = timestamp
-    }
+struct MediaItem: Identifiable, Codable {
+    let id: UUID
+    let title: String
+    let url: URL
+    let thumbnailURL: URL?
 }
