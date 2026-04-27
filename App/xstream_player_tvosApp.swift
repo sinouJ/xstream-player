@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct xstream_player_tvosApp: App {
+    @State private var appState = AppState()
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -26,6 +27,10 @@ struct xstream_player_tvosApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(appState)
+                .task {
+                    await appState.bootstrap()
+                }
         }
         .modelContainer(sharedModelContainer)
     }

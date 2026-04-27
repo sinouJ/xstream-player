@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MobilePlayerView: View {
+    var mediaLibrary = MediaLibrary()
+    
     var body: some View {
         Text("Mobile Player")
 
@@ -17,5 +19,13 @@ struct MobilePlayerView: View {
                 .foregroundColor(.white)
         }
         .frame(width: 200, height: 100)
+        
+        List(mediaLibrary.items) { item in
+            Text(item.title);
+            Text(item.type);
+        }
+        .task {
+            await mediaLibrary.loadItems(userId: "075aed76929e4b6abba76fcdaeae10ce")
+        }
     }
 }

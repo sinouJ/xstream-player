@@ -28,8 +28,8 @@ final class APIClient {
         #endif
     }
     
-    private let jellyfinBaseURL = "https://ton-jellyfin.domain.com" // TODO: Use URL type
-    private let apiKey: String = "API_KEY_STRING"
+    private let jellyfinBaseURL = "https://jellyfin.xstream.ink/jellyfin" // TODO: Use URL type
+    private let apiKey: String = "af0ff7d097624d998e97023ce3a80c10"
     
     private var defaultHeaders: [String: String] {
         [
@@ -57,9 +57,9 @@ final class APIClient {
         }
 
         switch http.statusCode {
-        case 200...299: break
-        case 401: throw APIError.unauthorized
-        default: throw APIError.serverError(http.statusCode)
+            case 200...299: break
+            case 401: throw APIError.unauthorized
+            default: throw APIError.serverError(http.statusCode)
         }
 
         return try JSONDecoder().decode(T.self, from: data)
@@ -71,6 +71,10 @@ final class APIClient {
         
         let response: JellyfinItemsResponse = try await request(path)
         return response.items.map(MediaItem.init)
+    }
+    
+    func validateToken() async throws {
+        let _: JellyfinUser = try await request("/Users/Me")
     }
     
 }

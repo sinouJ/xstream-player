@@ -19,11 +19,13 @@ struct JellyfinItem: Decodable {
     let name: String
     let type: String
     let productionYear: Int?
+    let genres: [String]?
     enum CodingKeys: String, CodingKey {
         case id = "Id"
         case name = "Name"
         case type = "Type"
         case productionYear = "ProductionYear"
+        case genres = "Genres"
     }
 }
 
@@ -32,11 +34,13 @@ struct MediaItem: Identifiable {
     let title: String
     let type: String
     let year: Int?
+    let genres: [String]?
 
     init(from item: JellyfinItem) {
         self.id    = item.id
         self.title = item.name
         self.type  = item.type
         self.year  = item.productionYear
+        self.genres = item.genres
     }
 }
