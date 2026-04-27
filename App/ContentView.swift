@@ -22,5 +22,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: MediaItem.self, inMemory: true)
 }
