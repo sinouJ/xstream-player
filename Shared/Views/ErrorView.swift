@@ -2,8 +2,9 @@ import SwiftUI
 
 // MARK: - Theme
 
+// Alias de compatibilité — la valeur réelle est AppTheme.Colors.danger.
 enum ErrorTheme {
-    static let accent = Color(red: 0.94, green: 0.34, blue: 0.34)
+    static let accent = AppTheme.Colors.danger
 }
 
 // MARK: - AppError UI extensions

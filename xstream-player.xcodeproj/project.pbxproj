@@ -28,6 +28,7 @@
 		4FB808AB2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FB808AC2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FB808AD2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
+		4FB8091C2FA292A90018D5BF /* LiquidGlassTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */; };
 		4FFF8CAB2F9CEC1F006ADCA2 /* xstream_playerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C962F9CEB7D006ADCA2 /* xstream_playerApp.swift */; };
 		4FFF8CAC2F9CEC28006ADCA2 /* xstream_player_tvosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C952F9CEB7D006ADCA2 /* xstream_player_tvosApp.swift */; };
 		4FFF8CAD2F9CEC2D006ADCA2 /* xstream_player_macosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C942F9CEB7D006ADCA2 /* xstream_player_macosApp.swift */; };
@@ -81,6 +82,7 @@
 		4FB4E4D82F9CE61B00121F5A /* xstream-player-macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-macos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-tvos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = XStreamPlayer.xcassets; sourceTree = "<group>"; };
+		4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassTabBar.swift; sourceTree = "<group>"; };
 		4FFF8C932F9CEB7D006ADCA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FFF8C942F9CEB7D006ADCA2 /* xstream_player_macosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xstream_player_macosApp.swift; sourceTree = "<group>"; };
 		4FFF8C952F9CEB7D006ADCA2 /* xstream_player_tvosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xstream_player_tvosApp.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				4FFF8C982F9CEB7D006ADCA2 /* MobilePlayerView.swift */,
+				4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				4FFF8CBD2F9CEC80006ADCA2 /* MobilePlayerView.swift in Sources */,
 				4FFF8CAB2F9CEC1F006ADCA2 /* xstream_playerApp.swift in Sources */,
 				4FFF8CB12F9CEC4F006ADCA2 /* MediaItem.swift in Sources */,
+				4FB8091C2FA292A90018D5BF /* LiquidGlassTabBar.swift in Sources */,
 				4FFF8CB42F9CEC5A006ADCA2 /* PlayerService.swift in Sources */,
 				4FFF8CB52F9CEC5A006ADCA2 /* APIClient.swift in Sources */,
 			);
@@ -841,7 +845,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xstream-player.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/xstream-player";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xstream-player-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/xstream-player-ios";
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Debug;
@@ -867,7 +871,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xstream-player.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/xstream-player";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/xstream-player-ios.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/xstream-player-ios";
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Release;
@@ -892,7 +896,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = "xstream-player";
+				TEST_TARGET_NAME = "xstream-player-ios";
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Debug;
@@ -917,7 +921,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = "xstream-player";
+				TEST_TARGET_NAME = "xstream-player-ios";
 				XROS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Release;
