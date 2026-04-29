@@ -45,7 +45,7 @@ final class AppState {
     }
     
     func logout() {
-        authService.clearToken()
+        authService.clear()
         phase = .needsAuth
     }
     

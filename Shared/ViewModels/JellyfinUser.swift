@@ -7,10 +7,10 @@
 
 struct JellyfinUser: Decodable {
     let id: String
-    let name: String
+    let username: String
     
     enum CodingKeys: String, CodingKey {
         case id = "Id"
-        case name = "Name"
+        case username = "Username"
     }
 }

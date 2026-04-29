@@ -1,0 +1,29 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="cliptinted128">
+      <rect width="128" height="128" rx="34.56" ry="34.56"></rect>
+    </clipPath>
+    <linearGradient id="bgtinted128" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#000000"></stop>
+      <stop offset="100%" stop-color="#0a0a0a"></stop>
+    </linearGradient>
+    <linearGradient id="playtinted128" x1="21.57" y1="64.00" x2="79.10" y2="64.00" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="0.5"></stop>
+      <stop offset="100%" stop-color="white" stop-opacity="1"></stop>
+    </linearGradient>
+    <linearGradient id="armtinted128" x1="0" y1="64.00" x2="128" y2="64.00" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="white" stop-opacity="0.8"></stop>
+    </linearGradient>
+    <filter id="glowtinted128" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6.5" result="blur"></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#cliptinted128)">
+    <rect width="128" height="128" fill="url(#bgtinted128)"></rect>
+    <path d="M 21.57,123.69 L 21.57,4.31 L 79.10,56.81 Q 86.29,64.00 79.10,71.19 L 21.57,123.69 Z" fill="url(#playtinted128)" filter="url(#glowtinted128)"></path>
+    <line x1="-1" y1="-1" x2="129" y2="129" stroke="url(#armtinted128)" stroke-width="25.89"></line>
+    <line x1="129" y1="-1" x2="-1" y2="129" stroke="url(#armtinted128)" stroke-width="25.89"></line>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clipdark32">
+      <rect width="32" height="32" rx="7.19" ry="7.19"></rect>
+    </clipPath>
+    <linearGradient id="bgdark32" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#07071a"></stop>
+      <stop offset="100%" stop-color="#12123a"></stop>
+    </linearGradient>
+    <linearGradient id="playdark32" x1="5.39" y1="16.00" x2="19.78" y2="16.00" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6d28d9" stop-opacity="0.55"></stop>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="1"></stop>
+    </linearGradient>
+    <linearGradient id="armdark32" x1="0" y1="16.00" x2="32" y2="16.00" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="0.92"></stop>
+      <stop offset="100%" stop-color="white" stop-opacity="0.69"></stop>
+    </linearGradient>
+    <filter id="glowdark32" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.6" result="blur"></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#clipdark32)">
+    <rect width="32" height="32" fill="url(#bgdark32)"></rect>
+    <path d="M 5.39,30.92 L 5.39,1.08 L 19.78,14.20 Q 21.58,16.00 19.78,17.80 L 5.39,30.92 Z" fill="url(#playdark32)" filter="url(#glowdark32)"></path>
+    <line x1="-1" y1="-1" x2="33" y2="33" stroke="url(#armdark32)" stroke-width="6.47"></line>
+    <line x1="33" y1="-1" x2="-1" y2="33" stroke="url(#armdark32)" stroke-width="6.47"></line>
+  </g>
+</svg>

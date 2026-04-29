@@ -6,31 +6,47 @@
 //
 
 import Foundation
+import Observation
 
+@Observable
+@MainActor
 final class AuthService {
     static var shared = AuthService()
+    private let keychain = KeychainStore()
+    private let credentialsKey = "jellyfin_credential"
+    private(set) var credentials: AuthCredentials?
     
-    private init() {}
-    
-    // TODO: à terme, lire/écrire dans le Keychain
-    private var storedToken: String? {
-        get { UserDefaults.standard.string(forKey: "jellyfin_token") }
-        set { UserDefaults.standard.set(newValue, forKey: "jellyfin_token") }
+    private init() {
+        loadFromKeychain()
     }
     
     var hasValidToken: Bool {
-        storedToken != nil && !(storedToken?.isEmpty ?? true)
+        credentials != nil
     }
     
     var token: String? {
-        storedToken
+        credentials?.accessToken
     }
     
-    func saveToken(_ token: String) {
-        storedToken = token
+    var serverUrl: URL? {
+        credentials?.jellyfinBaseUrl
     }
     
-    func clearToken() {
-        storedToken = nil
+    var userId: String? {
+        credentials?.userId
+    }
+
+    func save(_ credentials: AuthCredentials) throws {
+        try keychain.save(credentials, forKey: credentialsKey)
+        self.credentials = credentials
+    }
+    
+    func clear() {
+        try? keychain.delete(forKey: credentialsKey)
+        credentials = nil
+    }
+    
+    private func loadFromKeychain() {
+        credentials = try? keychain.load(AuthCredentials.self, forKey: credentialsKey)
     }
 }

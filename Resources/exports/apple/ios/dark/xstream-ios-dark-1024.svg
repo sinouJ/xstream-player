@@ -1,0 +1,29 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="clipdark1024">
+      <rect width="1024" height="1024" rx="230.09" ry="230.09"></rect>
+    </clipPath>
+    <linearGradient id="bgdark1024" x1="0" y1="0" x2="1024" y2="1024" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#07071a"></stop>
+      <stop offset="100%" stop-color="#12123a"></stop>
+    </linearGradient>
+    <linearGradient id="playdark1024" x1="172.58" y1="512.00" x2="632.81" y2="512.00" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6d28d9" stop-opacity="0.55"></stop>
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="1"></stop>
+    </linearGradient>
+    <linearGradient id="armdark1024" x1="0" y1="512.00" x2="1024" y2="512.00" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="white" stop-opacity="0.92"></stop>
+      <stop offset="100%" stop-color="white" stop-opacity="0.69"></stop>
+    </linearGradient>
+    <filter id="glowdark1024" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="51.8" result="blur"></feGaussianBlur>
+      <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#clipdark1024)">
+    <rect width="1024" height="1024" fill="url(#bgdark1024)"></rect>
+    <path d="M 172.58,989.48 L 172.58,34.52 L 632.81,454.47 Q 690.34,512.00 632.81,569.53 L 172.58,989.48 Z" fill="url(#playdark1024)" filter="url(#glowdark1024)"></path>
+    <line x1="-1" y1="-1" x2="1025" y2="1025" stroke="url(#armdark1024)" stroke-width="207.10"></line>
+    <line x1="1025" y1="-1" x2="-1" y2="1025" stroke="url(#armdark1024)" stroke-width="207.10"></line>
+  </g>
+</svg>

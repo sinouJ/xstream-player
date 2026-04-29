@@ -16,6 +16,18 @@
 		4F338B702FA007C70073466E /* JellyfinUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B6B2FA007C00073466E /* JellyfinUser.swift */; };
 		4F338B712FA007C70073466E /* JellyfinUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B6B2FA007C00073466E /* JellyfinUser.swift */; };
 		4F338B722FA007C70073466E /* JellyfinUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B6B2FA007C00073466E /* JellyfinUser.swift */; };
+		4F338B742FA0F3500073466E /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B732FA0F33A0073466E /* AuthCredentials.swift */; };
+		4F338B752FA0F3500073466E /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B732FA0F33A0073466E /* AuthCredentials.swift */; };
+		4F338B762FA0F3500073466E /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B732FA0F33A0073466E /* AuthCredentials.swift */; };
+		4F338B782FA0F56B0073466E /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B772FA0F5690073466E /* KeychainStore.swift */; };
+		4F338B792FA0F56B0073466E /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B772FA0F5690073466E /* KeychainStore.swift */; };
+		4F338B7A2FA0F56B0073466E /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B772FA0F5690073466E /* KeychainStore.swift */; };
+		4F338B842FA11FC20073466E /* APIClient+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B832FA11FC20073466E /* APIClient+Auth.swift */; };
+		4F338B852FA11FC20073466E /* APIClient+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B832FA11FC20073466E /* APIClient+Auth.swift */; };
+		4F338B862FA11FC20073466E /* APIClient+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F338B832FA11FC20073466E /* APIClient+Auth.swift */; };
+		4FB808AB2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
+		4FB808AC2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
+		4FB808AD2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FFF8CAB2F9CEC1F006ADCA2 /* xstream_playerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C962F9CEB7D006ADCA2 /* xstream_playerApp.swift */; };
 		4FFF8CAC2F9CEC28006ADCA2 /* xstream_player_tvosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C952F9CEB7D006ADCA2 /* xstream_player_tvosApp.swift */; };
 		4FFF8CAD2F9CEC2D006ADCA2 /* xstream_player_macosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C942F9CEB7D006ADCA2 /* xstream_player_macosApp.swift */; };
@@ -60,11 +72,15 @@
 		4F338B322F9F5F1E0073466E /* MediaLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibrary.swift; sourceTree = "<group>"; };
 		4F338B5C2F9FEE670073466E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4F338B6B2FA007C00073466E /* JellyfinUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyfinUser.swift; sourceTree = "<group>"; };
+		4F338B732FA0F33A0073466E /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
+		4F338B772FA0F5690073466E /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		4F338B832FA11FC20073466E /* APIClient+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Auth.swift"; sourceTree = "<group>"; };
 		4FB4E3FD2F9CDD6C00121F5A /* xstream-player-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E40C2F9CDD6E00121F5A /* xstream-playerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xstream-playerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E4162F9CDD6E00121F5A /* xstream-playerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "xstream-playerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E4D82F9CE61B00121F5A /* xstream-player-macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-macos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-tvos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = XStreamPlayer.xcassets; sourceTree = "<group>"; };
 		4FFF8C932F9CEB7D006ADCA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FFF8C942F9CEB7D006ADCA2 /* xstream_player_macosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xstream_player_macosApp.swift; sourceTree = "<group>"; };
 		4FFF8C952F9CEB7D006ADCA2 /* xstream_player_tvosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xstream_player_tvosApp.swift; sourceTree = "<group>"; };
@@ -92,6 +108,11 @@
 		4F338B492F9FEDA50073466E /* Views */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4F338B7B2FA119D40073466E /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4FB4E40F2F9CDD6E00121F5A /* xstream-playerTests */ = {
@@ -219,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				4FFF8C9E2F9CEB7D006ADCA2 /* Assets.xcassets */,
+				4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -233,6 +255,7 @@
 		4FFF8CA22F9CEB7D006ADCA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4F338B732FA0F33A0073466E /* AuthCredentials.swift */,
 				4FFF8CA12F9CEB7D006ADCA2 /* MediaItem.swift */,
 			);
 			path = Models;
@@ -241,6 +264,8 @@
 		4FFF8CA52F9CEB7D006ADCA2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4F338B832FA11FC20073466E /* APIClient+Auth.swift */,
+				4F338B772FA0F5690073466E /* KeychainStore.swift */,
 				4F338B5C2F9FEE670073466E /* AuthService.swift */,
 				4FFF8CA32F9CEB7D006ADCA2 /* APIClient.swift */,
 				4FFF8CA42F9CEB7D006ADCA2 /* PlayerService.swift */,
@@ -260,6 +285,7 @@
 		4FFF8CA72F9CEB7D006ADCA2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4F338B7B2FA119D40073466E /* Extensions */,
 				4F338B492F9FEDA50073466E /* Views */,
 				4F338B3A2F9FED2E0073466E /* AppState */,
 				4F338B2D2F9F5F090073466E /* ViewModels */,
@@ -306,6 +332,7 @@
 				4F338B2D2F9F5F090073466E /* ViewModels */,
 				4F338B3A2F9FED2E0073466E /* AppState */,
 				4F338B492F9FEDA50073466E /* Views */,
+				4F338B7B2FA119D40073466E /* Extensions */,
 			);
 			name = "xstream-player-ios";
 			packageProductDependencies = (
@@ -376,6 +403,7 @@
 				4F338B2D2F9F5F090073466E /* ViewModels */,
 				4F338B3A2F9FED2E0073466E /* AppState */,
 				4F338B492F9FEDA50073466E /* Views */,
+				4F338B7B2FA119D40073466E /* Extensions */,
 			);
 			name = "xstream-player-macos";
 			packageProductDependencies = (
@@ -400,6 +428,7 @@
 				4F338B2D2F9F5F090073466E /* ViewModels */,
 				4F338B3A2F9FED2E0073466E /* AppState */,
 				4F338B492F9FEDA50073466E /* Views */,
+				4F338B7B2FA119D40073466E /* Extensions */,
 			);
 			name = "xstream-player-tvos";
 			packageProductDependencies = (
@@ -438,11 +467,12 @@
 				};
 			};
 			buildConfigurationList = 4FB4E3F82F9CDD6C00121F5A /* Build configuration list for PBXProject "xstream-player" */;
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 4FB4E3F42F9CDD6C00121F5A;
 			minimizedProjectReferenceProxies = 1;
@@ -466,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFF8CBA2F9CEC70006ADCA2 /* Assets.xcassets in Resources */,
+				4FB808AC2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFF8CBB2F9CEC70006ADCA2 /* Assets.xcassets in Resources */,
+				4FB808AB2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FFF8CBC2F9CEC70006ADCA2 /* Assets.xcassets in Resources */,
+				4FB808AD2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,9 +539,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F338B752FA0F3500073466E /* AuthCredentials.swift in Sources */,
 				4FFF8CAE2F9CEC39006ADCA2 /* ContentView.swift in Sources */,
 				4F338B382F9F5F250073466E /* MediaLibrary.swift in Sources */,
 				4F338B5D2F9FEE6E0073466E /* AuthService.swift in Sources */,
+				4F338B792FA0F56B0073466E /* KeychainStore.swift in Sources */,
+				4F338B852FA11FC20073466E /* APIClient+Auth.swift in Sources */,
 				4F338B722FA007C70073466E /* JellyfinUser.swift in Sources */,
 				4FFF8CBD2F9CEC80006ADCA2 /* MobilePlayerView.swift in Sources */,
 				4FFF8CAB2F9CEC1F006ADCA2 /* xstream_playerApp.swift in Sources */,
@@ -536,9 +572,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F338B742FA0F3500073466E /* AuthCredentials.swift in Sources */,
 				4FFF8CAF2F9CEC39006ADCA2 /* ContentView.swift in Sources */,
 				4F338B392F9F5F250073466E /* MediaLibrary.swift in Sources */,
 				4F338B5E2F9FEE6E0073466E /* AuthService.swift in Sources */,
+				4F338B782FA0F56B0073466E /* KeychainStore.swift in Sources */,
+				4F338B862FA11FC20073466E /* APIClient+Auth.swift in Sources */,
 				4F338B702FA007C70073466E /* JellyfinUser.swift in Sources */,
 				4FFF8CAD2F9CEC2D006ADCA2 /* xstream_player_macosApp.swift in Sources */,
 				4FFF8CB22F9CEC4F006ADCA2 /* MediaItem.swift in Sources */,
@@ -552,9 +591,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F338B762FA0F3500073466E /* AuthCredentials.swift in Sources */,
 				4FFF8CB02F9CEC39006ADCA2 /* ContentView.swift in Sources */,
 				4F338B372F9F5F250073466E /* MediaLibrary.swift in Sources */,
 				4F338B5F2F9FEE6E0073466E /* AuthService.swift in Sources */,
+				4F338B7A2FA0F56B0073466E /* KeychainStore.swift in Sources */,
+				4F338B842FA11FC20073466E /* APIClient+Auth.swift in Sources */,
 				4F338B712FA007C70073466E /* JellyfinUser.swift in Sources */,
 				4FFF8CBE2F9CEC88006ADCA2 /* TVPlayerView.swift in Sources */,
 				4FFF8CAC2F9CEC28006ADCA2 /* xstream_player_tvosApp.swift in Sources */,
