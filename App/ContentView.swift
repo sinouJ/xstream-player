@@ -21,10 +21,14 @@ struct ContentView: View {
                 LoginView()
             case .ready:
                 MainView()
-            case .error(let message):
-                ErrorView(message: message) {
-                    appState.retry()
-                }
+            case .error(let error):
+                ErrorView(
+                    error: error,
+                    serverURL: AuthService.shared.serverUrl?.absoluteString ?? "—",
+                    username: AuthService.shared.credentials?.username ?? "—",
+                    onRetry: { appState.retry() },
+                    onModify: { appState.logout() }
+                )
             }
         }
         .animation(.easeInOut(duration: 0.3), value: appState.phase)

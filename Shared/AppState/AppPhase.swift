@@ -10,5 +10,5 @@ enum AppPhase: Equatable {
     case launching
     case needsAuth
     case ready
-    case error(String)
+    case error(AppError)
 }

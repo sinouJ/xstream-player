@@ -34,9 +34,20 @@ final class AppState {
             
             _ = await minimumDelay
             phase = .ready
+        } catch let apiError as APIError {
+            _ = await minimumDelay
+            switch apiError {
+            case .unauthorized:
+                phase = .error(.unauthorized)
+            default:
+                phase = .error(.serverUnreachable)
+            }
+        } catch let urlError as URLError {
+            _ = await minimumDelay
+            phase = urlError.code == .timedOut ? .error(.timeout) : .error(.serverUnreachable)
         } catch {
             _ = await minimumDelay
-            phase = .error(error.localizedDescription)
+            phase = .error(.serverUnreachable)
         }
     }
     
