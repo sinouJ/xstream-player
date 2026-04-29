@@ -11,6 +11,6 @@ struct JellyfinUser: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id = "Id"
-        case username = "Username"
+        case username = "Name"
     }
 }

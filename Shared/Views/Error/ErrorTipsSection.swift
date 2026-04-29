@@ -33,17 +33,19 @@ struct ErrorTipsSection: View {
                     ForEach(tips, id: \.self) { tip in
                         HStack(alignment: .top, spacing: 10) {
                             Circle()
-                                .fill(.white.opacity(0.45))
-                                .frame(width: 4, height: 4)
-                                .padding(.top, 7)
+                                .fill(LoginTheme.accent)
+                                .frame(width: 5, height: 5)
+                                .padding(.top, 6)
                             Text(tip)
                                 .font(.system(size: 14))
                                 .foregroundStyle(.white.opacity(0.7))
+                                .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
                 }
                 .padding(.horizontal, 16)
                 .padding(.bottom, 16)
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .background(
