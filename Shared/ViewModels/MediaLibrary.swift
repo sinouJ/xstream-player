@@ -4,6 +4,7 @@ import SwiftUI
 final class MediaLibrary {
     var items: [MediaItem] = []
     var resumables: [MediaItem] = []
+    var lastFilms: [MediaItem] = []
     var isLoading: Bool = false
     var error: APIError? = nil
 
@@ -27,6 +28,26 @@ final class MediaLibrary {
             error = e
         } catch {
             print("loadResumableItems error: \(error)")
+        }
+    }
+    
+    func loadLastFilmItems(userId: String) async {
+        do {
+            lastFilms = try await APIClient.shared.fetchLastFilmItems(userId: userId)
+        } catch let e as APIError {
+            error = e
+        } catch {
+            print("loadLastFilmItems error: \(error)")
+        }
+    }
+
+    func loadImageForLastFilm(itemId: String, imageType: ImageType) async {
+        guard let index = lastFilms.firstIndex(where: { $0.id == itemId }) else { return }
+        let imageId = lastFilms[index].parentThumbItemId ?? itemId
+        do {
+            lastFilms[index].image = try await APIClient.shared.fetchImageItem(imageType: imageType, itemId: imageId)
+        } catch {
+            print("loadImageForLastFilm error: \(error)")
         }
     }
 

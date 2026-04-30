@@ -83,7 +83,7 @@ struct PosterCard: View {
     }
 
     private var newBadge: some View {
-        Text("NOUVEAU")
+        Text("NEW")
             .font(.system(size: 9, weight: .bold))
             .foregroundStyle(.white)
             .kerning(0.5)
@@ -113,17 +113,20 @@ struct PosterCard: View {
                 .font(AppTheme.Typography.strong)
                 .foregroundStyle(isFocused ? AppTheme.Colors.primary : .white)
                 .lineLimit(1)
+                .padding(.horizontal, 4)
 
             if let percent = progressPercent, let minutes = remainingMinutes {
                 Text("\(Int(percent * 100))% · \(minutes)min restantes")
                     .font(AppTheme.Typography.tiny)
                     .foregroundStyle(AppTheme.Colors.primary)
                     .lineLimit(1)
+                    .padding(.horizontal, 4)
             } else if let genre = item.genres?.first {
                 Text(genre)
                     .font(AppTheme.Typography.tiny)
                     .foregroundStyle(.white.opacity(0.55))
                     .lineLimit(1)
+                    .padding(.horizontal, 4)
             }
         }
     }

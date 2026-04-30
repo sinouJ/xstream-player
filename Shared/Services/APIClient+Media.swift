@@ -17,6 +17,17 @@ extension APIClient {
         try await rawRequest("Items/\(itemId)/Images/\(imageType.rawValue)")
     }
 
+    func fetchLastFilmItems(userId: String, limit: Int = 5) async throws -> [MediaItem] {
+        let path = "Users/\(userId)/Items"
+            + "?Recursive=true"
+            + "&IncludeItemTypes=Movie"
+            + "&SortBy=DateCreated"
+            + "&SortOrder=Descending"
+            + "&Limit=\(limit)"
+        let response: JellyfinItemsResponse = try await request(path)
+        return response.items.map(MediaItem.init)
+    }
+
     func fetchResumableItems(userId: String) async throws -> [MediaItem] {
         let filters = ItemFilter.queryValue(for: [.isResumable])
         let path = "Users/\(userId)/Items"
