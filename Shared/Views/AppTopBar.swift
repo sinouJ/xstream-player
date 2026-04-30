@@ -19,9 +19,6 @@ struct AppTopBar: View {
             }
             .padding(.horizontal, AppTheme.Spacing.md)
             .padding(.vertical, AppTheme.Spacing.sm)
-
-            Divider()
-                .overlay(Color.white.opacity(0.08))
         }
     }
 }

@@ -17,6 +17,7 @@ enum AppTab: Hashable, Sendable {
 
 struct MobilePlayerView: View {
     @State private var selectedTab: AppTab = .home
+    @State private var folder = MediaFolder()
 
     private var username: String {
         AuthService.shared.credentials?.username ?? ""
@@ -25,7 +26,10 @@ struct MobilePlayerView: View {
     var body: some View {
         Group {
             switch selectedTab {
-            case .home:      HomeTabView(username: username)
+            case .home: HomeTabView(username: username, libraries: folder.libraries)
+                .task {
+                    await folder.loadLibraries()
+                }
             case .library:   LibraryTabView(username: username)
             case .downloads: DownloadsTabView(username: username)
             case .search:    SearchTabView(username: username)
@@ -35,18 +39,6 @@ struct MobilePlayerView: View {
         .background(AppTheme.Colors.background.ignoresSafeArea())
         .safeAreaInset(edge: .bottom) {
             LiquidGlassTabBar(selection: $selectedTab)
-        }
-    }
-}
-
-// MARK: - Placeholder tab content
-
-private struct HomeTabView: View {
-    let username: String
-    var body: some View {
-        VStack(spacing: 0) {
-            AppTopBar(title: "Accueil", username: username)
-            Spacer()
         }
     }
 }

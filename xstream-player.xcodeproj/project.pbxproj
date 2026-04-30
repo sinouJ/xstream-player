@@ -29,6 +29,12 @@
 		4FB808AC2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FB808AD2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FB8091C2FA292A90018D5BF /* LiquidGlassTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */; };
+		4FB8097A2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */; };
+		4FB8097B2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */; };
+		4FB8097C2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */; };
+		4FB809942FA3B0370018D5BF /* ItemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809932FA3B0370018D5BF /* ItemFilter.swift */; };
+		4FB809952FA3B0370018D5BF /* ItemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809932FA3B0370018D5BF /* ItemFilter.swift */; };
+		4FB809962FA3B0370018D5BF /* ItemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809932FA3B0370018D5BF /* ItemFilter.swift */; };
 		4FFF8CAB2F9CEC1F006ADCA2 /* xstream_playerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C962F9CEB7D006ADCA2 /* xstream_playerApp.swift */; };
 		4FFF8CAC2F9CEC28006ADCA2 /* xstream_player_tvosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C952F9CEB7D006ADCA2 /* xstream_player_tvosApp.swift */; };
 		4FFF8CAD2F9CEC2D006ADCA2 /* xstream_player_macosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF8C942F9CEB7D006ADCA2 /* xstream_player_macosApp.swift */; };
@@ -83,6 +89,8 @@
 		4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-tvos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = XStreamPlayer.xcassets; sourceTree = "<group>"; };
 		4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassTabBar.swift; sourceTree = "<group>"; };
+		4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Media.swift"; sourceTree = "<group>"; };
+		4FB809932FA3B0370018D5BF /* ItemFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFilter.swift; sourceTree = "<group>"; };
 		4FFF8C932F9CEB7D006ADCA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FFF8C942F9CEB7D006ADCA2 /* xstream_player_macosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xstream_player_macosApp.swift; sourceTree = "<group>"; };
 		4FFF8C952F9CEB7D006ADCA2 /* xstream_player_tvosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xstream_player_tvosApp.swift; sourceTree = "<group>"; };
@@ -260,6 +268,7 @@
 			children = (
 				4F338B732FA0F33A0073466E /* AuthCredentials.swift */,
 				4FFF8CA12F9CEB7D006ADCA2 /* MediaItem.swift */,
+				4FB809932FA3B0370018D5BF /* ItemFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +276,7 @@
 		4FFF8CA52F9CEB7D006ADCA2 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */,
 				4F338B832FA11FC20073466E /* APIClient+Auth.swift */,
 				4F338B772FA0F5690073466E /* KeychainStore.swift */,
 				4F338B5C2F9FEE670073466E /* AuthService.swift */,
@@ -545,6 +555,8 @@
 				4F338B752FA0F3500073466E /* AuthCredentials.swift in Sources */,
 				4FFF8CAE2F9CEC39006ADCA2 /* ContentView.swift in Sources */,
 				4F338B382F9F5F250073466E /* MediaLibrary.swift in Sources */,
+				4FB8097B2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */,
+				4FB809942FA3B0370018D5BF /* ItemFilter.swift in Sources */,
 				4F338B5D2F9FEE6E0073466E /* AuthService.swift in Sources */,
 				4F338B792FA0F56B0073466E /* KeychainStore.swift in Sources */,
 				4F338B852FA11FC20073466E /* APIClient+Auth.swift in Sources */,
@@ -585,8 +597,10 @@
 				4F338B702FA007C70073466E /* JellyfinUser.swift in Sources */,
 				4FFF8CAD2F9CEC2D006ADCA2 /* xstream_player_macosApp.swift in Sources */,
 				4FFF8CB22F9CEC4F006ADCA2 /* MediaItem.swift in Sources */,
+				4FB809952FA3B0370018D5BF /* ItemFilter.swift in Sources */,
 				4FFF8CB62F9CEC5A006ADCA2 /* PlayerService.swift in Sources */,
 				4FFF8CBF2F9CEC8F006ADCA2 /* DesktopPlayerView.swift in Sources */,
+				4FB8097C2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */,
 				4FFF8CB72F9CEC5A006ADCA2 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,8 +618,10 @@
 				4F338B712FA007C70073466E /* JellyfinUser.swift in Sources */,
 				4FFF8CBE2F9CEC88006ADCA2 /* TVPlayerView.swift in Sources */,
 				4FFF8CAC2F9CEC28006ADCA2 /* xstream_player_tvosApp.swift in Sources */,
+				4FB809962FA3B0370018D5BF /* ItemFilter.swift in Sources */,
 				4FFF8CB32F9CEC4F006ADCA2 /* MediaItem.swift in Sources */,
 				4FFF8CB82F9CEC5A006ADCA2 /* PlayerService.swift in Sources */,
+				4FB8097A2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */,
 				4FFF8CB92F9CEC5A006ADCA2 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -35,6 +35,10 @@ extension APIClient {
             username: response.user.name
         )
     }
+    
+    func validateToken() async throws {
+        let _: JellyfinUser = try await request("Users/Me")
+    }
 }
 
 private struct AuthResponse: Decodable {

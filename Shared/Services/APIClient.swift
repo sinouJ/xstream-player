@@ -107,6 +107,37 @@ final class APIClient {
         return try JSONDecoder().decode(T.self, from: data)
     }
     
+    internal func rawRequest(
+        _ path: String,
+        baseURLOverride: URL? = nil,
+        tokenOverride: String? = nil
+    ) async throws -> Data {
+        let baseUrl = try resolveBaseURL(override: baseURLOverride)
+        let token = resolveToken(override: tokenOverride)
+
+        guard let url = URL(string: path, relativeTo: baseUrl) else {
+            throw APIError.invalidURL
+        }
+
+        var req = URLRequest(url: url)
+        req.httpMethod = "GET"
+
+        let headers = await MainActor.run { defaultHeaders(token: token) }
+        headers.forEach { req.setValue($1, forHTTPHeaderField: $0) }
+
+        let (data, response) = try await URLSession.shared.data(for: req)
+
+        guard let http = response as? HTTPURLResponse else {
+            throw APIError.serverError(0)
+        }
+
+        switch http.statusCode {
+        case 200...299: return data
+        case 401: throw APIError.unauthorized
+        default: throw APIError.serverError(http.statusCode)
+        }
+    }
+
     @MainActor
     private func resolveBaseURL(override: URL?) throws -> URL {
         if let override { return override.withTrailingSlash }
@@ -118,19 +149,6 @@ final class APIClient {
     private func resolveToken(override: String?) -> String? {
         override ?? auth.token
     }
-    
-    func fetchItems(userId: String, parentId: String? = nil) async throws -> [MediaItem] {
-        var path = "Users/\(userId)/Items?Recursive=true&IncludeItemTypes=Movie,Series,Episode"
-        if let parentId { path += "&ParentId=\(parentId)" }
-
-        let response: JellyfinItemsResponse = try await request(path)
-        return response.items.map(MediaItem.init)
-    }
-
-    func validateToken() async throws {
-        let _: JellyfinUser = try await request("Users/Me")
-    }
-
 }
 
 private extension URL {

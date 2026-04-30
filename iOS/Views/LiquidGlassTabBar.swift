@@ -24,10 +24,14 @@ struct LiquidGlassTabBar: View {
         TabItem(tab: .search,    id: "search",    icon: "magnifyingglass",  iconFill: "magnifyingglass",        label: "Recherche"),
     ]
 
+    // Règle :
+    //   - Onglet actif         → capsule seule, contenu accentué
+    //   - Groupe de 1 inactif  → capsule seule, contenu neutre
+    //   - Groupe de 2+ inactifs → pill fusionnée (glassEffectUnion "left" / "right")
     private enum TabShape {
         case active
         case isolated
-        case grouped(String)
+        case grouped(String) // "left" ou "right"
     }
 
     private func tabShape(at index: Int) -> TabShape {
@@ -61,31 +65,31 @@ struct LiquidGlassTabBar: View {
     private func tabButton(item: TabItem, shape: TabShape) -> some View {
         switch shape {
         case .active:
-            // Cercle accentué — icône colorée, fond verre neutre (pas de tint sur le glass)
+            // Capsule seule, contenu violet — fond glass neutre (pas de tint sur le glass)
             Button {} label: {
-                circleContent(icon: item.iconFill, label: item.label, isAccent: true)
+                itemContent(icon: item.iconFill, label: item.label, isAccent: true)
             }
             .buttonStyle(.plain)
-            .glassEffect(.regular.interactive(), in: Circle())
+            .glassEffect(.regular.interactive())
             .glassEffectID(item.id, in: namespace)
 
         case .isolated:
-            // Cercle neutre — seul de son côté, non accentué
+            // Capsule seule, contenu neutre — même taille que les items dans la pill
             Button {
-                withAnimation(.smooth(duration: 1.2)) { selection = item.tab }
+                withAnimation(.smooth(duration: 0.55)) { selection = item.tab }
             } label: {
-                circleContent(icon: item.icon, label: item.label, isAccent: false)
+                itemContent(icon: item.icon, label: item.label, isAccent: false)
             }
             .buttonStyle(.plain)
-            .glassEffect(.regular.interactive(), in: Circle())
+            .glassEffect(.regular.interactive())
             .glassEffectID(item.id, in: namespace)
 
         case .grouped(let groupID):
-            // Pill groupée — plusieurs inactifs fusionnés côte à côte
+            // Pill groupée — plusieurs inactifs fusionnés dans une même capsule
             Button {
-                withAnimation(.smooth(duration: 1.2)) { selection = item.tab }
+                withAnimation(.smooth(duration: 0.55)) { selection = item.tab }
             } label: {
-                pillContent(icon: item.icon, label: item.label)
+                itemContent(icon: item.icon, label: item.label, isAccent: false)
             }
             .buttonStyle(.plain)
             .glassEffect(.regular.interactive())
@@ -94,25 +98,15 @@ struct LiquidGlassTabBar: View {
         }
     }
 
-    private func circleContent(icon: String, label: String, isAccent: Bool) -> some View {
-        VStack(spacing: 4) {
-            Image(systemName: icon)
-                .font(.system(size: 22, weight: .semibold))
-                .foregroundStyle(isAccent ? AppTheme.Colors.accent : Color.primary.opacity(0.6))
-                .frame(width: 44, height: 44)
-            Text(label)
-                .font(.system(size: 10, weight: .medium))
-        }
-    }
-
-    private func pillContent(icon: String, label: String) -> some View {
+    // Contenu identique pour tous les états → hauteur toujours cohérente
+    private func itemContent(icon: String, label: String, isAccent: Bool) -> some View {
         VStack(spacing: 4) {
             Image(systemName: icon)
                 .font(.system(size: 20, weight: .semibold))
             Text(label)
                 .font(.system(size: 10, weight: .medium))
         }
-        .foregroundStyle(Color.primary.opacity(0.6))
+        .foregroundStyle(isAccent ? AppTheme.Colors.accent : Color.primary.opacity(0.6))
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
     }
