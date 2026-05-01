@@ -14,7 +14,6 @@ struct PosterCard: View {
         VStack(alignment: .leading, spacing: 6) {
             cardVisual
                 .frame(width: Self.cardWidth, height: Self.cardHeight)
-                .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.card))
                 .overlay {
                     RoundedRectangle(cornerRadius: AppTheme.Radius.card)
                         .strokeBorder(
@@ -31,6 +30,13 @@ struct PosterCard: View {
                 .overlay {
                     if isFocused { playOverlay }
                 }
+                .overlay(alignment: .bottom) {
+                    if let percent = progressPercent {
+                        progressBar(percent)
+                    }
+                }
+                .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.card))
+            
 
             cardFooter
                 .frame(width: Self.cardWidth, alignment: .leading)
@@ -40,7 +46,7 @@ struct PosterCard: View {
     // MARK: - Card visual
 
     private var cardVisual: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             if let data = item.image, let img = Image(data: data) {
                 img
                     .resizable()
@@ -53,6 +59,19 @@ struct PosterCard: View {
                 Color.black.opacity(0.35)
             }
         }
+    }
+
+    private func progressBar(_ percent: Double) -> some View {
+        GeometryReader { geo in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(.white.opacity(0.25))
+                Rectangle()
+                    .fill(AppTheme.Colors.primary)
+                    .frame(width: geo.size.width * min(max(percent, 0), 1))
+            }
+        }
+        .frame(height: 3)
     }
 
     private var gradientFallback: LinearGradient {
@@ -115,8 +134,8 @@ struct PosterCard: View {
                 .lineLimit(1)
                 .padding(.horizontal, 4)
 
-            if let percent = progressPercent, let minutes = remainingMinutes {
-                Text("\(Int(percent * 100))% · \(minutes)min restantes")
+            if progressPercent != nil, let minutes = remainingMinutes {
+                Text("\(minutes)min restantes")
                     .font(AppTheme.Typography.tiny)
                     .foregroundStyle(AppTheme.Colors.primary)
                     .lineLimit(1)

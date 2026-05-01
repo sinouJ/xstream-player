@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HeroCard: View {
     let item: MediaItem
+    var onTap: (() -> Void)? = nil
 
     private var metadataText: String {
         [
@@ -62,6 +63,7 @@ struct HeroCard: View {
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: 16))
+        .onTapGesture { onTap?() }
         .overlay(alignment: .topTrailing) {
             Text("4K HDR")
                 .font(.system(size: 11, weight: .bold))

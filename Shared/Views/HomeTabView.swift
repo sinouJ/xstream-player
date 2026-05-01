@@ -4,6 +4,7 @@ struct HomeTabView: View {
     let username: String
     var libraries: [MediaItem]
     @State private var library = MediaLibrary()
+    @State private var selectedItem: MediaItem? = nil
 
     var body: some View {
         VStack(spacing: 0) {
@@ -12,7 +13,7 @@ struct HomeTabView: View {
                 VStack(alignment: .leading, spacing: AppTheme.Spacing.md) {
                     
                     if let featured = library.items.first {
-                        HeroCard(item: featured)
+                        HeroCard(item: featured, onTap: { selectedItem = featured })
                             .padding(.horizontal, AppTheme.Spacing.sm)
                             .task {
                                 await library.loadImageItem(itemId: featured.id, imageType: .thumbnail)
@@ -30,6 +31,9 @@ struct HomeTabView: View {
                 }
                 .padding(.top, AppTheme.Spacing.sm)
             }
+        }
+        .fullScreenCover(item: $selectedItem) { item in
+            MediaDetailView(item: item)
         }
         .task {
             let userId = AuthService.shared.userId ?? ""
