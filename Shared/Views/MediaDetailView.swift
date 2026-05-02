@@ -49,14 +49,6 @@ struct MediaDetailView: View {
 
     private var heroSection: some View {
         ZStack {
-            heroBackground
-
-            LinearGradient(
-                colors: [.clear, AppTheme.Colors.background],
-                startPoint: .init(x: 0.5, y: 0.45),
-                endPoint: .bottom
-            )
-
             VStack {
                 HStack {
                     Button { dismiss() } label: {
@@ -94,23 +86,27 @@ struct MediaDetailView: View {
                     }
             }
             .buttonStyle(.plain)
-
-            if let rating = item.rating {
-                HStack {
-                    Spacer()
-                    ratingBadge(rating)
-                        .padding(.trailing, AppTheme.Spacing.sm)
-                }
-            }
         }
-        .frame(height: Self.heroHeight)
+        .frame(maxWidth: .infinity, minHeight: Self.heroHeight, maxHeight: Self.heroHeight)
+        .background {
+            heroBackground
+                .overlay {
+                    LinearGradient(
+                        colors: [AppTheme.Colors.background, .clear],
+                        startPoint: .init(x: 0.5, y: 1),
+                        endPoint: .init(x: 0.5, y: 0.7)
+                    )
+                }
+        }
         .clipped()
     }
 
     @ViewBuilder
     private var heroBackground: some View {
         if let data = backdropData ?? item.image, let img = Image(data: data) {
-            img.resizable().scaledToFill()
+            img
+                .resizable()
+                .scaledToFill()
         } else {
             LinearGradient(
                 colors: [
@@ -121,30 +117,6 @@ struct MediaDetailView: View {
                 endPoint: .bottomTrailing
             )
         }
-    }
-
-    private func ratingBadge(_ rating: Double) -> some View {
-        VStack(spacing: 3) {
-            HStack(spacing: 4) {
-                Image(systemName: "star.fill")
-                    .font(.system(size: 10))
-                    .foregroundStyle(AppTheme.Colors.accent)
-                if let votes = item.voteCount {
-                    Text(votes >= 1000
-                         ? String(format: "%.1fk", Double(votes) / 1000)
-                         : "\(votes)")
-                        .font(.system(size: 13, weight: .bold))
-                        .foregroundStyle(.white)
-                }
-            }
-            Text(String(format: "%.1f/10", rating))
-                .font(.system(size: 11))
-                .foregroundStyle(.white.opacity(0.65))
-        }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(AppTheme.Colors.surface.opacity(0.9))
-        .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.card))
     }
 
     // MARK: - Title

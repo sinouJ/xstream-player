@@ -16,12 +16,17 @@ struct HeroCard: View {
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            LinearGradient(
-                colors: [.clear, .black.opacity(0.55)],
-                startPoint: .center,
-                endPoint: .bottom
-            )
-
+            Rectangle()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundColor(Color.clear)
+                .background() {
+                    LinearGradient(
+                        colors: [AppTheme.Colors.background, .clear],
+                        startPoint: .init(x: 0, y: 1),
+                        endPoint: .init(x: 1, y: 0)
+                    )
+                }
+            
             VStack(alignment: .leading, spacing: 4) {
                 Text("À LA UNE")
                     .font(.system(size: 11, weight: .bold))
