@@ -8,7 +8,7 @@ struct MediaDetailView: View {
     @State private var isFavorite = false
     @Environment(\.dismiss) private var dismiss
 
-    private static let heroHeight: CGFloat = 260
+    private static let heroHeight: CGFloat = 340
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -39,7 +39,7 @@ struct MediaDetailView: View {
         .background(AppTheme.Colors.background)
         .ignoresSafeArea(edges: .top)
         .task {
-            if let data = try? await APIClient.shared.fetchImageItem(imageType: .backdrop, itemId: item.id) {
+            if let data = try? await APIClient.shared.fetchImageItem(imageType: .banner, itemId: item.id) {
                 backdropData = data
             }
         }

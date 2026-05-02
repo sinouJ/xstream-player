@@ -11,7 +11,7 @@ struct HomeTabView: View {
             AppTopBar(title: "Accueil", username: username)
             ScrollView {
                 VStack(alignment: .leading, spacing: AppTheme.Spacing.md) {
-                    
+
                     if let featured = library.items.first {
                         HeroCard(item: featured, onTap: { selectedItem = featured })
                             .padding(.horizontal, AppTheme.Spacing.sm)
@@ -23,15 +23,17 @@ struct HomeTabView: View {
                     if !library.resumables.isEmpty {
                         resumeSection
                     }
-                    
+
                     if !library.lastFilms.isEmpty {
                         lastFilmsSection
                     }
-                    
+
                 }
                 .padding(.top, AppTheme.Spacing.sm)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppTheme.Colors.background.ignoresSafeArea())
         .fullScreenCover(item: $selectedItem) { item in
             MediaDetailView(item: item)
         }
@@ -58,8 +60,7 @@ struct HomeTabView: View {
                     ForEach(library.resumables) { item in
                         PosterCard(
                             item: item,
-                            progressPercent: item.watchedPercentage.map { $0 / 100 },
-                            remainingMinutes: item.remainingMinutes
+                            onTap: { selectedItem = item }
                         )
                         .task {
                             await library.loadImageForResumable(itemId: item.id, imageType: .primary)
@@ -70,23 +71,22 @@ struct HomeTabView: View {
             }
         }
     }
-    
+
     // MARK: - Last films section
-    
+
     private var lastFilmsSection: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
             Text("Derniers films ajoutés")
                 .font(AppTheme.Typography.heading1)
                 .foregroundStyle(.white)
                 .padding(.horizontal, AppTheme.Spacing.sm)
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(library.lastFilms) { item in
                         PosterCard(
                             item: item,
-                            progressPercent: item.watchedPercentage.map { $0 / 100 },
-                            remainingMinutes: item.remainingMinutes
+                            onTap: { selectedItem = item }
                         )
                         .task {
                             await library.loadImageForLastFilm(itemId: item.id, imageType: .primary)

@@ -4,8 +4,7 @@ struct PosterCard: View {
     let item: MediaItem
     var isNew: Bool = false
     var isFocused: Bool = false
-    var progressPercent: Double? = nil   // 0.0–1.0
-    var remainingMinutes: Int? = nil
+    var onTap: (() -> Void)? = nil
 
     private static let cardWidth: CGFloat  = 115
     private static let cardHeight: CGFloat = 165
@@ -31,7 +30,7 @@ struct PosterCard: View {
                     if isFocused { playOverlay }
                 }
                 .overlay(alignment: .bottom) {
-                    if let percent = progressPercent {
+                    if let percent = item.watchedPercentage.map({ $0 / 100 }) {
                         progressBar(percent)
                     }
                 }
@@ -41,6 +40,7 @@ struct PosterCard: View {
             cardFooter
                 .frame(width: Self.cardWidth, alignment: .leading)
         }
+        .onTapGesture { onTap?() }
     }
 
     // MARK: - Card visual
@@ -134,7 +134,7 @@ struct PosterCard: View {
                 .lineLimit(1)
                 .padding(.horizontal, 4)
 
-            if progressPercent != nil, let minutes = remainingMinutes {
+            if item.watchedPercentage != nil, let minutes = item.remainingMinutes {
                 Text("\(minutes)min restantes")
                     .font(AppTheme.Typography.tiny)
                     .foregroundStyle(AppTheme.Colors.primary)

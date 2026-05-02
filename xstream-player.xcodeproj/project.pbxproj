@@ -28,7 +28,6 @@
 		4FB808AB2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FB808AC2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
 		4FB808AD2FA21DBE0018D5BF /* XStreamPlayer.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */; };
-		4FB8091C2FA292A90018D5BF /* LiquidGlassTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */; };
 		4FB8097A2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */; };
 		4FB8097B2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */; };
 		4FB8097C2FA2B2BA0018D5BF /* APIClient+Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */; };
@@ -88,7 +87,6 @@
 		4FB4E4D82F9CE61B00121F5A /* xstream-player-macos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-macos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB4E5052F9CE65C00121F5A /* xstream-player-tvos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "xstream-player-tvos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB808AA2FA21DBE0018D5BF /* XStreamPlayer.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = XStreamPlayer.xcassets; sourceTree = "<group>"; };
-		4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassTabBar.swift; sourceTree = "<group>"; };
 		4FB809792FA2B2B20018D5BF /* APIClient+Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Media.swift"; sourceTree = "<group>"; };
 		4FB809932FA3B0370018D5BF /* ItemFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemFilter.swift; sourceTree = "<group>"; };
 		4FFF8C932F9CEB7D006ADCA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -218,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				4FFF8C982F9CEB7D006ADCA2 /* MobilePlayerView.swift */,
-				4FB8091B2FA292A90018D5BF /* LiquidGlassTabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -564,7 +561,6 @@
 				4FFF8CBD2F9CEC80006ADCA2 /* MobilePlayerView.swift in Sources */,
 				4FFF8CAB2F9CEC1F006ADCA2 /* xstream_playerApp.swift in Sources */,
 				4FFF8CB12F9CEC4F006ADCA2 /* MediaItem.swift in Sources */,
-				4FB8091C2FA292A90018D5BF /* LiquidGlassTabBar.swift in Sources */,
 				4FFF8CB42F9CEC5A006ADCA2 /* PlayerService.swift in Sources */,
 				4FFF8CB52F9CEC5A006ADCA2 /* APIClient.swift in Sources */,
 			);

@@ -1,74 +1,96 @@
-//
-//  MobilePlayerView.swift
-//  xstream-player
-//
-//  Created by Jordan Sinou on 25/04/2026.
-//
-
 import SwiftUI
-
-// MARK: - Tab enum
 
 enum AppTab: Hashable, Sendable {
     case home, library, downloads, search
 }
 
-// MARK: - Root view
-
 struct MobilePlayerView: View {
     @State private var selectedTab: AppTab = .home
     @State private var folder = MediaFolder()
+    @State private var searchText = ""
+    @State private var isSearchActive = false
 
     private var username: String {
         AuthService.shared.credentials?.username ?? ""
     }
 
     var body: some View {
-        Group {
-            switch selectedTab {
-            case .home: HomeTabView(username: username, libraries: folder.libraries)
-                .task {
-                    await folder.loadLibraries()
+        TabView(selection: $selectedTab) {
+            Tab("Accueil", systemImage: "house.fill", value: AppTab.home) {
+                HomeTabView(username: username, libraries: folder.libraries)
+                    .task { await folder.loadLibraries() }
+            }
+
+            Tab("Librairie", systemImage: "square.grid.2x2.fill", value: AppTab.library) {
+                LibraryTabView(username: username)
+            }
+
+            Tab("Téléchargés", systemImage: "arrow.down.circle.fill", value: AppTab.downloads) {
+                DownloadsTabView(username: username)
+            }
+
+            Tab(value: AppTab.search, role: .search) {
+                NavigationStack {
+                    SearchTabView(searchText: searchText)
+                        .navigationTitle("Recherche")
+                        .navigationBarTitleDisplayMode(.large)
+                        .searchable(
+                            text: $searchText,
+                            isPresented: $isSearchActive,
+                            prompt: "Rechercher..."
+                        )
+                        .toolbarBackground(AppTheme.Colors.background, for: .navigationBar)
+                        .toolbarBackground(.visible, for: .navigationBar)
+                        .toolbarColorScheme(.dark, for: .navigationBar)
                 }
-            case .library:   LibraryTabView(username: username)
-            case .downloads: DownloadsTabView(username: username)
-            case .search:    SearchTabView(username: username)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(AppTheme.Colors.background.ignoresSafeArea())
-        .safeAreaInset(edge: .bottom) {
-            LiquidGlassTabBar(selection: $selectedTab)
+        .tint(AppTheme.Colors.accent)
+        .toolbarBackground(AppTheme.Colors.background, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
+        .toolbarColorScheme(.dark, for: .tabBar)
+        .onChange(of: selectedTab) { _, newTab in
+            isSearchActive = (newTab == .search)
         }
     }
 }
 
+// MARK: - Tab content views
+
 private struct LibraryTabView: View {
     let username: String
+
     var body: some View {
         VStack(spacing: 0) {
             AppTopBar(title: "Librairie", username: username)
             Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppTheme.Colors.background.ignoresSafeArea())
     }
 }
 
 private struct DownloadsTabView: View {
     let username: String
+
     var body: some View {
         VStack(spacing: 0) {
             AppTopBar(title: "Téléchargés", username: username)
             Spacer()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppTheme.Colors.background.ignoresSafeArea())
     }
 }
 
 private struct SearchTabView: View {
-    let username: String
+    let searchText: String
+
     var body: some View {
-        VStack(spacing: 0) {
-            AppTopBar(title: "Recherche", username: username)
-            Spacer()
-        }
+        Color.clear
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppTheme.Colors.background.ignoresSafeArea())
     }
 }
