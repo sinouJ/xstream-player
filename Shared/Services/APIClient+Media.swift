@@ -30,10 +30,9 @@ extension APIClient {
 
     func fetchResumableItems(userId: String) async throws -> [MediaItem] {
         let filters = ItemFilter.queryValue(for: [.isResumable])
-        let path = "Users/\(userId)/Items"
+        let path = "UserItems/Resume"
             + "?Recursive=true"
             + "&IncludeItemTypes=Movie,Episode"
-            + "&Filters=\(filters)"
             + "&Fields=UserData,RunTimeTicks"
             + "&SortBy=DatePlayed"
             + "&SortOrder=Descending"

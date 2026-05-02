@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeTabView: View {
     let username: String
     var libraries: [MediaItem]
-    @State private var library = MediaLibrary()
+    @Environment(MediaLibrary.self) private var library
     @State private var selectedItem: MediaItem? = nil
 
     var body: some View {
@@ -16,7 +16,7 @@ struct HomeTabView: View {
                         HeroCard(item: featured, onTap: { selectedItem = featured })
                             .padding(.horizontal, AppTheme.Spacing.sm)
                             .task {
-                                await library.loadImageItem(itemId: featured.id, imageType: .thumbnail)
+                                await library.loadImageItem(itemId: featured.id)
                             }
                     }
 
@@ -36,13 +36,13 @@ struct HomeTabView: View {
         .background(AppTheme.Colors.background.ignoresSafeArea())
         .fullScreenCover(item: $selectedItem) { item in
             MediaDetailView(item: item)
+                .task {
+                   await library.loadImageForMediaDetailView(itemId: item.id)
+                }
         }
         .task {
             let userId = AuthService.shared.userId ?? ""
-            async let a: Void = library.loadItems(userId: userId)
-            async let b: Void = library.loadResumableItems(userId: userId)
-            async let c: Void = library.loadLastFilmItems(userId: userId)
-            _ = await (a, b, c)
+            await library.loadIfNeeded(userId: userId)
         }
     }
 
@@ -63,7 +63,7 @@ struct HomeTabView: View {
                             onTap: { selectedItem = item }
                         )
                         .task {
-                            await library.loadImageForResumable(itemId: item.id, imageType: .primary)
+                            await library.loadImageForResumable(itemId: item.id)
                         }
                     }
                 }
@@ -89,7 +89,7 @@ struct HomeTabView: View {
                             onTap: { selectedItem = item }
                         )
                         .task {
-                            await library.loadImageForLastFilm(itemId: item.id, imageType: .primary)
+                            await library.loadImageForLastFilm(itemId: item.id)
                         }
                     }
                 }

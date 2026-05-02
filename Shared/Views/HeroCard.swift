@@ -52,7 +52,7 @@ struct HeroCard: View {
         .frame(maxWidth: .infinity)
         .frame(height: 220)
         .background {
-            if let data = item.image, let img = Image(data: data) {
+            if let data = item.thumbnail, let img = Image(data: data) {
                 img
                     .resizable()
                     .scaledToFill()

@@ -7,6 +7,8 @@ final class MediaLibrary {
     var lastFilms: [MediaItem] = []
     var isLoading: Bool = false
     var error: APIError? = nil
+    private var lastLoadedAt: Date?
+    private let cacheDuration: TimeInterval = 1200
 
     func loadItems(userId: String) async {
         isLoading = true
@@ -41,33 +43,63 @@ final class MediaLibrary {
         }
     }
 
-    func loadImageForLastFilm(itemId: String, imageType: ImageType) async {
+    func loadImageForLastFilm(itemId: String) async {
         guard let index = lastFilms.firstIndex(where: { $0.id == itemId }) else { return }
         let imageId = lastFilms[index].parentThumbItemId ?? itemId
         do {
-            lastFilms[index].image = try await APIClient.shared.fetchImageItem(imageType: imageType, itemId: imageId)
+            lastFilms[index].primary = try await APIClient.shared.fetchImageItem(imageType: .primary, itemId: imageId)
         } catch {
             print("loadImageForLastFilm error: \(error)")
         }
     }
 
-    func loadImageItem(itemId: String, imageType: ImageType) async {
+    func loadImageItem(itemId: String) async {
         guard let index = items.firstIndex(where: { $0.id == itemId }) else { return }
         let imageId = items[index].parentThumbItemId ?? itemId
         do {
-            items[index].image = try await APIClient.shared.fetchImageItem(imageType: imageType, itemId: imageId)
+            items[index].thumbnail = try await APIClient.shared.fetchImageItem(imageType: .thumbnail, itemId: imageId)
         } catch {
             print("loadImageItem error: \(error)")
         }
     }
 
-    func loadImageForResumable(itemId: String, imageType: ImageType) async {
+    func loadImageForResumable(itemId: String) async {
         guard let index = resumables.firstIndex(where: { $0.id == itemId }) else { return }
         let imageId = resumables[index].parentThumbItemId ?? itemId
         do {
-            resumables[index].image = try await APIClient.shared.fetchImageItem(imageType: imageType, itemId: imageId)
+            resumables[index].primary = try await APIClient.shared.fetchImageItem(imageType: .primary, itemId: imageId)
         } catch {
             print("loadImageForResumable error: \(error)")
         }
+    }
+    
+    func loadImageForMediaDetailView(itemId: String) async {
+        guard let index = items.firstIndex(where: { $0.id == itemId }) else { return }
+        let imageId = items[index].parentThumbItemId ?? itemId
+        do {
+            items[index].banner = try await APIClient.shared.fetchImageItem(imageType: .thumbnail, itemId: imageId)
+        } catch {
+            print("loadImageForMediaDetailView error: \(error)")
+        }
+    }
+    
+    func loadIfNeeded(userId: String) async {
+        if let lastLoadedAt,
+           Date().timeIntervalSince(lastLoadedAt) < cacheDuration,
+           !items.isEmpty {
+            return
+        }
+        
+        async let items = loadItems(userId: userId)
+        async let resumables = loadResumableItems(userId: userId)
+        async let lastFilms = loadLastFilmItems(userId: userId)
+        
+        _ = await (items, resumables, lastFilms)
+        lastLoadedAt = Date()
+    }
+    
+    func refresh(userId: String) async {
+        lastLoadedAt = nil
+        await loadIfNeeded(userId: userId)
     }
 }

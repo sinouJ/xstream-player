@@ -38,11 +38,6 @@ struct MediaDetailView: View {
         }
         .background(AppTheme.Colors.background)
         .ignoresSafeArea(edges: .top)
-        .task {
-            if let data = try? await APIClient.shared.fetchImageItem(imageType: .banner, itemId: item.id) {
-                backdropData = data
-            }
-        }
     }
 
     // MARK: - Hero
@@ -103,10 +98,15 @@ struct MediaDetailView: View {
 
     @ViewBuilder
     private var heroBackground: some View {
-        if let data = backdropData ?? item.image, let img = Image(data: data) {
+        if let data = backdropData, let img = Image(data: data) {
             img
                 .resizable()
                 .scaledToFill()
+                .task {
+                    if let data = try? await APIClient.shared.fetchImageItem(imageType: .banner, itemId: item.id) {
+                        backdropData = data
+                    }
+                }
         } else {
             LinearGradient(
                 colors: [

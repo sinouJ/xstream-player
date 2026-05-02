@@ -57,14 +57,13 @@ struct MediaItem: Identifiable {
     let year: Int?
     let genres: [String]?
     let rating: Double?
-    var image: Data? = nil
+    var thumbnail: Data? = nil
+    var primary: Data? = nil
+    var banner: Data? = nil
     let seriesName: String?
     let parentThumbItemId: String?
-    /// Percentage watched (0–100). Populated only for resumable items.
     let watchedPercentage: Double?
-    /// Remaining playback time in minutes. Populated only for resumable items.
     let remainingMinutes: Int?
-    /// Total runtime in minutes.
     let runtimeMinutes: Int?
     let overview: String?
     let officialRating: String?

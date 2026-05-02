@@ -47,7 +47,7 @@ struct PosterCard: View {
 
     private var cardVisual: some View {
         ZStack(alignment: .bottom) {
-            if let data = item.image, let img = Image(data: data) {
+            if let data = item.primary, let img = Image(data: data) {
                 img
                     .resizable()
                     .scaledToFill()
