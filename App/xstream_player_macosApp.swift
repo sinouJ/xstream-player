@@ -11,27 +11,16 @@ import SwiftData
 @main
 struct xstream_player_macosApp: App {
     @State private var appState = AppState()
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
+    @State private var mediaLibrary = MediaLibrary()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(appState)
+                .environment(mediaLibrary)
                 .task {
                     await appState.bootstrap()
                 }
         }
-        .modelContainer(sharedModelContainer)
     }
 }

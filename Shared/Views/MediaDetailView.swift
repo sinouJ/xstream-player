@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MediaDetailView: View {
     let item: MediaItem
+    let isLoading: Bool
 
     @State private var backdropData: Data? = nil
     @State private var isSynopsisExpanded = false
@@ -38,6 +39,18 @@ struct MediaDetailView: View {
         }
         .background(AppTheme.Colors.background)
         .ignoresSafeArea(edges: .top)
+        .task {
+            let imageId = item.parentThumbItemId ?? item.id
+            do {
+                backdropData = try await APIClient.shared.fetchImageItem(imageType: .backdrop, itemId: imageId)
+            } catch {
+                do {
+                    backdropData = try await APIClient.shared.fetchImageItem(imageType: .thumbnail, itemId: imageId)
+                } catch {
+                    print("MediaDetailView image error: \(error)")
+                }
+            }
+        }
     }
 
     // MARK: - Hero
@@ -98,15 +111,10 @@ struct MediaDetailView: View {
 
     @ViewBuilder
     private var heroBackground: some View {
-        if let data = backdropData, let img = Image(data: data) {
+        if let data = backdropData ?? item.primary ?? item.thumbnail, let img = Image(data: data) {
             img
                 .resizable()
                 .scaledToFill()
-                .task {
-                    if let data = try? await APIClient.shared.fetchImageItem(imageType: .banner, itemId: item.id) {
-                        backdropData = data
-                    }
-                }
         } else {
             LinearGradient(
                 colors: [

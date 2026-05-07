@@ -5,6 +5,7 @@ final class MediaLibrary {
     var items: [MediaItem] = []
     var resumables: [MediaItem] = []
     var lastFilms: [MediaItem] = []
+    var lastSeries: [MediaItem] = []
     var isLoading: Bool = false
     var error: APIError? = nil
     private var lastLoadedAt: Date?
@@ -45,9 +46,8 @@ final class MediaLibrary {
 
     func loadImageForLastFilm(itemId: String) async {
         guard let index = lastFilms.firstIndex(where: { $0.id == itemId }) else { return }
-        let imageId = lastFilms[index].parentThumbItemId ?? itemId
         do {
-            lastFilms[index].primary = try await APIClient.shared.fetchImageItem(imageType: .primary, itemId: imageId)
+            lastFilms[index].primary = try await APIClient.shared.fetchImageItem(imageType: .primary, itemId: itemId)
         } catch {
             print("loadImageForLastFilm error: \(error)")
         }
@@ -83,6 +83,26 @@ final class MediaLibrary {
         }
     }
     
+    func loadLastSeriesItems(userId: String) async {
+        do {
+            lastSeries = try await APIClient.shared.fetchLastSeriesItems(userId: userId)
+        } catch let e as APIError {
+            error = e
+        } catch {
+            print("loadLastSeriesItems error: \(error)")
+        }
+    }
+    
+    func loadImageForLastSeries(itemId: String) async {
+        guard let index = lastSeries.firstIndex(where: { $0.id == itemId }) else { return }
+        let imageId = lastSeries[index].parentThumbItemId ?? itemId
+        do {
+            lastSeries[index].primary = try await APIClient.shared.fetchImageItem(imageType: .primary, itemId: imageId)
+        } catch {
+            print("loadImageForLastSeries error: \(error)")
+        }
+    }
+    
     func loadIfNeeded(userId: String) async {
         if let lastLoadedAt,
            Date().timeIntervalSince(lastLoadedAt) < cacheDuration,
@@ -93,8 +113,9 @@ final class MediaLibrary {
         async let items = loadItems(userId: userId)
         async let resumables = loadResumableItems(userId: userId)
         async let lastFilms = loadLastFilmItems(userId: userId)
+        async let lastSeries = loadLastSeriesItems(userId: userId)
         
-        _ = await (items, resumables, lastFilms)
+        _ = await (items, resumables, lastFilms, lastSeries)
         lastLoadedAt = Date()
     }
     

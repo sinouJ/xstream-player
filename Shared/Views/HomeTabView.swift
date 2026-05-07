@@ -27,6 +27,10 @@ struct HomeTabView: View {
                     if !library.lastFilms.isEmpty {
                         lastFilmsSection
                     }
+                    
+                    if !library.lastSeries.isEmpty {
+                        lastSeriesSection
+                    }
 
                 }
                 .padding(.top, AppTheme.Spacing.sm)
@@ -34,12 +38,22 @@ struct HomeTabView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(AppTheme.Colors.background.ignoresSafeArea())
+        #if os(macOS)
+        .sheet(item: $selectedItem) { item in
+            MediaDetailView(item: item, isLoading: library.isLoading)
+                .task {
+                    await library.loadImageForMediaDetailView(itemId: item.id)
+                }
+                .frame(minWidth: 700, minHeight: 500)
+        }
+        #else
         .fullScreenCover(item: $selectedItem) { item in
-            MediaDetailView(item: item)
+            MediaDetailView(item: item, isLoading: library.isLoading)
                 .task {
                    await library.loadImageForMediaDetailView(itemId: item.id)
                 }
         }
+        #endif
         .task {
             let userId = AuthService.shared.userId ?? ""
             await library.loadIfNeeded(userId: userId)
@@ -90,6 +104,32 @@ struct HomeTabView: View {
                         )
                         .task {
                             await library.loadImageForLastFilm(itemId: item.id)
+                        }
+                    }
+                }
+                .padding(.horizontal, AppTheme.Spacing.sm)
+            }
+        }
+    }
+    
+    // MARK: - Last series section
+
+    private var lastSeriesSection: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
+            Text("Dernières séries ajoutés")
+                .font(AppTheme.Typography.heading1)
+                .foregroundStyle(.white)
+                .padding(.horizontal, AppTheme.Spacing.sm)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(library.lastSeries) { item in
+                        PosterCard(
+                            item: item,
+                            onTap: { selectedItem = item }
+                        )
+                        .task {
+                            await library.loadImageForLastSeries(itemId: item.parentThumbItemId ?? item.id)
                         }
                     }
                 }

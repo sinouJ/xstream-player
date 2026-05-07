@@ -1,14 +1,89 @@
-//
-//  DesktopPlaterView.swift
-//  xstream-player
-//
-//  Created by Jordan Sinou on 25/04/2026.
-//
-
 import SwiftUI
 
-struct DesktopPlaterView: View {
+enum AppTab: Hashable, Sendable {
+    case home, library, downloads, search
+}
+
+struct DesktopPlayerView: View {
+    @State private var selectedTab: AppTab = .home
+    @State private var folder = MediaFolder()
+    @State private var searchText = ""
+    @State private var isSearchActive = false
+
+    private var username: String {
+        AuthService.shared.credentials?.username ?? ""
+    }
+
     var body: some View {
-        Text("Desktop Player")
+        TabView(selection: $selectedTab) {
+            Tab("Accueil", systemImage: "house.fill", value: AppTab.home) {
+                HomeTabView(username: username, libraries: folder.libraries)
+                    .task { await folder.loadLibraries() }
+            }
+
+            Tab("Librairie", systemImage: "square.grid.2x2.fill", value: AppTab.library) {
+                LibraryTabView(username: username)
+            }
+
+            Tab("Téléchargés", systemImage: "arrow.down.circle.fill", value: AppTab.downloads) {
+                DownloadsTabView(username: username)
+            }
+
+            Tab(value: AppTab.search, role: .search) {
+                NavigationStack {
+                    SearchTabView(searchText: searchText)
+                        .navigationTitle("Recherche")
+                        .searchable(
+                            text: $searchText,
+                            isPresented: $isSearchActive,
+                            prompt: "Rechercher..."
+                        )
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppTheme.Colors.background.ignoresSafeArea())
+        .tint(AppTheme.Colors.accent)
+        .onChange(of: selectedTab) { _, newTab in
+            isSearchActive = (newTab == .search)
+        }
+    }
+}
+
+// MARK: - Tab content views
+
+private struct LibraryTabView: View {
+    let username: String
+
+    var body: some View {
+        VStack(spacing: 0) {
+            AppTopBar(title: "Librairie", username: username)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppTheme.Colors.background.ignoresSafeArea())
+    }
+}
+
+private struct DownloadsTabView: View {
+    let username: String
+
+    var body: some View {
+        VStack(spacing: 0) {
+            AppTopBar(title: "Téléchargés", username: username)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(AppTheme.Colors.background.ignoresSafeArea())
+    }
+}
+
+private struct SearchTabView: View {
+    let searchText: String
+
+    var body: some View {
+        Color.clear
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppTheme.Colors.background.ignoresSafeArea())
     }
 }
