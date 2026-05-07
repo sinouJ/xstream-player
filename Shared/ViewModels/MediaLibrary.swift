@@ -6,6 +6,7 @@ final class MediaLibrary {
     var resumables: [MediaItem] = []
     var lastFilms: [MediaItem] = []
     var lastSeries: [MediaItem] = []
+    var genres: [GenreItem] = []
     var isLoading: Bool = false
     var error: APIError? = nil
     private var lastLoadedAt: Date?
@@ -103,6 +104,37 @@ final class MediaLibrary {
         }
     }
     
+    func buildGenres() {
+        var seen = Set<String>()
+        var result: [GenreItem] = []
+        for item in items {
+            for genre in item.genres ?? [] {
+                if !genre.contains("&") && seen.insert(genre).inserted {
+                    let itemId = getRandomIdByGenre(genre: genre) ?? ""
+                    result.append(GenreItem(name: genre, representativeItemId: itemId))
+                }
+            }
+        }
+        genres = result
+    }
+    
+    func getRandomIdByGenre(genre: String) -> String? {
+        return items.filter({ $0.genres?.contains(genre) == true}).randomElement()?.id
+    }
+
+    func loadImageForGenre(genreName: String) async {
+        guard let index = genres.firstIndex(where: { $0.name == genreName }),
+              genres[index].image == nil else { return }
+        do {
+            genres[index].image = try await APIClient.shared.fetchImageItem(
+                imageType: .primary,
+                itemId: genres[index].representativeItemId
+            )
+        } catch {
+            print("loadImageForGenre error: \(error)")
+        }
+    }
+
     func loadIfNeeded(userId: String) async {
         if let lastLoadedAt,
            Date().timeIntervalSince(lastLoadedAt) < cacheDuration,
@@ -116,6 +148,7 @@ final class MediaLibrary {
         async let lastSeries = loadLastSeriesItems(userId: userId)
         
         _ = await (items, resumables, lastFilms, lastSeries)
+        buildGenres()
         lastLoadedAt = Date()
     }
     

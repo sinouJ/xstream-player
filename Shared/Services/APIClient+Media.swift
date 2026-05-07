@@ -2,7 +2,7 @@ import Foundation
 
 extension APIClient {
     func fetchItems(userId: String, parentId: String? = nil) async throws -> [MediaItem] {
-        var path = "Users/\(userId)/Items?Recursive=true&IncludeItemTypes=Movie,Series,Episode"
+        var path = "Items?Recursive=true&IncludeItemTypes=Movie,Series,Episode&Fields=Genres,Overview"
         if let parentId { path += "&ParentId=\(parentId)" }
         let response: JellyfinItemsResponse = try await request(path)
         return response.items.map(MediaItem.init)
@@ -13,9 +13,10 @@ extension APIClient {
     }
 
     func fetchLastFilmItems(userId: String, limit: Int = 5) async throws -> [MediaItem] {
-        let path = "Users/\(userId)/Items"
+        let path = "Items"
             + "?Recursive=true"
             + "&IncludeItemTypes=Movie"
+            + "&Fields=Genres,Overview,MediaStreams"
             + "&SortBy=DateCreated"
             + "&SortOrder=Descending"
             + "&Limit=\(limit)"
@@ -24,9 +25,10 @@ extension APIClient {
     }
     
     func fetchLastSeriesItems(userId: String, limit: Int = 5) async throws -> [MediaItem] {
-        let path = "Users/\(userId)/Items"
+        let path = "Items"
             + "?Recursive=true"
             + "&IncludeItemTypes=Series"
+            + "&Fields=Genres,Overview,MediaStreams"
             + "&SortBy=DateCreated"
             + "&SortOrder=Descending"
             + "&Limit=\(limit)"
@@ -38,7 +40,7 @@ extension APIClient {
         let path = "UserItems/Resume"
             + "?Recursive=true"
             + "&IncludeItemTypes=Movie,Episode"
-            + "&Fields=UserData,RunTimeTicks"
+            + "&Fields=UserData,RunTimeTicks,Genres,Overview"
             + "&SortBy=DatePlayed"
             + "&SortOrder=Descending"
             + "&Limit=20"

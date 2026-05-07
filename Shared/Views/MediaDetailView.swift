@@ -142,7 +142,9 @@ struct MediaDetailView: View {
     private var badgesRow: some View {
         HStack(spacing: 8) {
             if let age = item.officialRating { pill(age) }
-            pill("4K")
+            if (getMediaQuality(item: item).count > 0) {
+                pill(getMediaQuality(item: item))
+            }
             if let r = item.rating {
                 HStack(spacing: 3) {
                     Image(systemName: "star.fill")
@@ -208,7 +210,7 @@ struct MediaDetailView: View {
 
             let parts = [
                 item.genres?.joined(separator: ", "),
-                item.runtimeMinutes.map { "\($0 / 60)h \($0 % 60)min" }
+                item.runtimeMinutes.map { "\($0 / 60)h\($0 % 60)min" }
             ].compactMap { $0 }
 
             if !parts.isEmpty {
@@ -340,6 +342,20 @@ struct MediaDetailView: View {
         CastMember(initials: "MV", name: "Mira", role: "Scientifique", color: Color(red: 0.62, green: 0.36, blue: 0.12)),
         CastMember(initials: "OP", name: "Orin", role: "Pilote",       color: Color(red: 0.52, green: 0.13, blue: 0.28)),
     ]
+    
+    private func getMediaQuality(item: MediaItem) -> String {
+        let displayTitle = item.displayTitle ?? ""
+        
+        if (displayTitle.contains("4K") || displayTitle.contains("2160")) {
+            return "4K"
+        }
+        
+        else if (displayTitle.contains("HD") || displayTitle.contains("1080p")) {
+            return "HD"
+        }
+        
+        return ""
+    }
 }
 
 private extension Image {

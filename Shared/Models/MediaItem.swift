@@ -16,6 +16,18 @@ struct JellyfinUserData: Decodable {
     }
 }
 
+struct JellyfinMediaStream: Decodable {
+    let displayTitle: String?
+    let videoRange: String?
+    let width: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case displayTitle = "DisplayTitle"
+        case videoRange   = "Video"
+        case width        = "Width"
+    }
+}
+
 struct JellyfinItem: Decodable {
     let id: String
     let name: String
@@ -31,6 +43,7 @@ struct JellyfinItem: Decodable {
     let officialRating: String?
     let premiereDate: String?
     let voteCount: Int?
+    let mediaStreams: [JellyfinMediaStream]?
 
     enum CodingKeys: String, CodingKey {
         case id                = "Id"
@@ -47,6 +60,7 @@ struct JellyfinItem: Decodable {
         case officialRating    = "OfficialRating"
         case premiereDate      = "PremiereDate"
         case voteCount         = "VoteCount"
+        case mediaStreams      = "MediaStreams"
     }
 }
 
@@ -55,7 +69,7 @@ struct MediaItem: Identifiable {
     let title: String
     let type: String
     let year: Int?
-    let genres: [String]?
+    var genres: [String]? = nil
     let rating: Double?
     var thumbnail: Data? = nil
     var primary: Data? = nil
@@ -69,6 +83,9 @@ struct MediaItem: Identifiable {
     let officialRating: String?
     let premiereDate: Date?
     let voteCount: Int?
+    let videoRange: String?
+    let width: Int?
+    let displayTitle: String?
 
     init(from item: JellyfinItem) {
         self.id                 = item.id
@@ -83,6 +100,9 @@ struct MediaItem: Identifiable {
         self.overview           = item.overview
         self.officialRating     = item.officialRating
         self.voteCount          = item.voteCount
+        self.videoRange         = item.mediaStreams?[0].videoRange
+        self.displayTitle       = item.mediaStreams?[0].displayTitle
+        self.width              = item.mediaStreams?[0].width
 
         self.runtimeMinutes = item.runTimeTicks.map { Int($0 / 600_000_000) }
 

@@ -6,7 +6,6 @@ enum AppTab: Hashable, Sendable {
 
 struct MobilePlayerView: View {
     @State private var selectedTab: AppTab = .home
-    @State private var folder = MediaFolder()
     @State private var searchText = ""
     @State private var isSearchActive = false
 
@@ -17,8 +16,7 @@ struct MobilePlayerView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("Accueil", systemImage: "house.fill", value: AppTab.home) {
-                HomeTabView(username: username, libraries: folder.libraries)
-                    .task { await folder.loadLibraries() }
+                HomeTabView(username: username)
             }
 
             Tab("Librairie", systemImage: "square.grid.2x2.fill", value: AppTab.library) {

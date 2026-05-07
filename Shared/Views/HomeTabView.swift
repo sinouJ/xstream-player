@@ -2,7 +2,6 @@ import SwiftUI
 
 struct HomeTabView: View {
     let username: String
-    var libraries: [MediaItem]
     @Environment(MediaLibrary.self) private var library
     @State private var selectedItem: MediaItem? = nil
 
@@ -30,6 +29,10 @@ struct HomeTabView: View {
                     
                     if !library.lastSeries.isEmpty {
                         lastSeriesSection
+                    }
+
+                    if !library.genres.isEmpty {
+                        genresSection
                     }
 
                 }
@@ -112,6 +115,29 @@ struct HomeTabView: View {
         }
     }
     
+    // MARK: - Genres section
+
+    private var genresSection: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.xs) {
+            Text("Explorer par genre")
+                .font(AppTheme.Typography.heading1)
+                .foregroundStyle(.white)
+                .padding(.horizontal, AppTheme.Spacing.sm)
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 12) {
+                    ForEach(library.genres) { genre in
+                        GenreCard(genre: genre)
+                            .task {
+                                await library.loadImageForGenre(genreName: genre.name)
+                            }
+                    }
+                }
+                .padding(.horizontal, AppTheme.Spacing.sm)
+            }
+        }
+    }
+
     // MARK: - Last series section
 
     private var lastSeriesSection: some View {
